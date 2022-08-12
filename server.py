@@ -8,7 +8,7 @@ HOST = os.getenv('HOST', '0.0.0.0')
 PORT = int(os.getenv('PORT', 8080))
 index = None
 with open('index.html', 'r') as f:
-    index = f.read().replace(r'{{PORT}}', str(PORT))
+    index = f.read()
 
 async def testhandle(request):
     return aiohttp.web.Response(text=index, content_type='text/html')

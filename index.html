@@ -6,10 +6,12 @@
     <body>
         <h1>WebSocket Demo</h1>
         <script>
-            var ws = new WebSocket("ws://127.0.0.1:{{PORT}}/ws"),
+            console.log('Starting Websocket Connection')
+            const host = location.host
+            const ws = new WebSocket(`ws://${host}/ws`),
                 messages = document.createElement('ul');
             ws.onmessage = function (event) {
-                var messages = document.getElementsByTagName('ul')[0],
+                let messages = document.getElementsByTagName('ul')[0],
                     message = document.createElement('li'),
                     content = document.createTextNode(event.data);
                 message.appendChild(content);
