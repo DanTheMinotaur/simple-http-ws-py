@@ -10,6 +10,9 @@
             const host = location.host
             const ws = new WebSocket(`ws://${host}/ws`),
                 messages = document.createElement('ul');
+            ws.addEventListener('error', (event) => {
+                console.error('WebSocket error: ', JSON.stringify(event));
+            });
             ws.onmessage = function (event) {
                 let messages = document.getElementsByTagName('ul')[0],
                     message = document.createElement('li'),
